@@ -1,0 +1,11 @@
+directives:
+- add_directives:
+    file: package://drake_diff_ik_dual_arm/models/add_dual_arm_pandas_without_grippers.yaml
+
+# - Add hands (nominal grippers).
+- add_directives:
+    model_namespace: right
+    file: package://drake_diff_ik_dual_arm/models/add_panda_hand_nominal.yaml
+- add_directives:
+    model_namespace: left
+    file: package://drake_diff_ik_dual_arm/models/add_panda_hand_nominal.yaml

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "drake-diff-ik-dual-arm"
+version = "0.1.0"
+description = ""
+authors = ["Eric Cousineau <you@example.com>"]
+readme = "README.md"
+packages = [{include = "drake_diff_ik_dual_arm"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+drake = "^1.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,10 @@
+directives:
+
+# Requires `add_panda_flange_rotated.yaml`.
+
+- add_model:
+    name: panda_hand
+    file: package://drake_models/franka_description/urdf/panda_hand.urdf
+- add_weld:
+    parent: panda::flange_rotated
+    child: panda_hand::panda_hand

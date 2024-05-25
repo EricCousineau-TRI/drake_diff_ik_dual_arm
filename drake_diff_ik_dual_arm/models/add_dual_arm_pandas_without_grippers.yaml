@@ -1,0 +1,47 @@
+directives:
+- add_model:
+    name: environment
+    file: package://drake_diff_ik_dual_arm/models/environment.sdf
+- add_weld:
+    parent: world
+    child: environment::__model__
+
+# Right arm.
+- add_model_instance:
+    name: right
+- add_model:
+    name: right::panda
+    file: package://drake_models/franka_description/urdf/panda_arm.urdf
+- add_directives:
+    model_namespace: right
+    file: package://drake_diff_ik_dual_arm/models/add_panda_arm_extras.yaml
+# - Anchor according to "fake" calibration.
+- add_frame:
+    name: _table_from_right_panda
+    X_PF:
+      base_frame: right::panda::origin
+      translation: [0.70, 0, 0.15]
+      rotation: !Rpy { deg: [0, 0, 45] }
+- add_weld:
+    parent: environment::table::__model__
+    child: _table_from_right_panda
+
+# Left arm.
+- add_model_instance:
+    name: left
+- add_model:
+    name: left::panda
+    file: package://drake_models/franka_description/urdf/panda_arm.urdf
+- add_directives:
+    model_namespace: left
+    file: package://drake_diff_ik_dual_arm/models/add_panda_arm_extras.yaml
+# - Anchor according to "fake" calibration.
+- add_frame:
+    name: _table_from_left_panda
+    X_PF:
+      base_frame: left::panda::origin
+      translation: [0.70, 0, 0.15]
+      rotation: !Rpy { deg: [0, 0, -45] }
+- add_weld:
+    parent: environment::table::__model__
+    child: _table_from_left_panda

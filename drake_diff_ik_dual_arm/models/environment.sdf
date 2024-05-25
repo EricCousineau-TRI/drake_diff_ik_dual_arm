@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<sdf version="1.11">
+  <model name="environment">
+
+    <model name="table">
+      <!--
+      We use a 2x2x0.05 m rectangular block to represent
+      a rigid table surface.
+      -->
+      <link name="table">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+        </inertial>
+        <visual name="visual">
+          <pose>0 0 -0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.7 1.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <diffuse>0.5 0.5 0.7 0.2</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <pose>0 0 -0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.7 1.5 0.05</size>
+            </box>
+          </geometry>
+          <drake:proximity_properties>
+            <drake:rigid_hydroelastic/>
+            <drake:mu_dynamic>1</drake:mu_dynamic>
+            <drake:mu_static>1</drake:mu_static>
+            <drake:hunt_crossley_dissipation>3.0</drake:hunt_crossley_dissipation>
+            <drake:relaxation_time>0.1</drake:relaxation_time>
+          </drake:proximity_properties>
+        </collision>
+      </link>
+    </model>
+
+  </model>
+</sdf>

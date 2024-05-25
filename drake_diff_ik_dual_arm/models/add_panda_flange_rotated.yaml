@@ -1,0 +1,14 @@
+directives:
+
+# Origin: Flush with wrist face, in center.
+# Axes:
+#   +Y: Oriented with button wrist pointed forward.
+#   +X: Pointed to left of button wrist
+#   +Z: Pointed out from wrist.
+
+- add_frame:
+    name: panda::flange_rotated
+    X_PF:
+      base_frame: panda::panda_link8
+      translation: [0, 0, 0]
+      rotation: !Rpy { deg: [0, 0, -45] }
